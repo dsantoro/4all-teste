@@ -1,0 +1,222 @@
+body {
+    background-color: #f1f4f7;
+}
+
+.App {
+
+    padding: 30px 0;
+}
+
+/// Mixin to prefix a property
+/// @author Danylo Santoro
+/// @param {String} $property - Property name
+/// @param {*} $value - Property value
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($property, $value, $prefixes: ()) {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+}
+
+.flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+}
+
+.el-shadow {
+
+    box-shadow: 1px 1px 10px -3px rgba(0, 0, 0, .4);
+}
+
+.each-score {
+
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+
+    @include prefix(align-items, center, ms moz webkit);
+
+    > .icon {
+
+        text-align: center;
+        padding: 15px 0;
+        color: white;
+        width: 115px;
+        min-width: 115px;
+
+        &.new-order-icon {
+
+            background-color: #30a5ff;
+        }
+
+        &.new-comment-icon {
+
+            background-color: #ffb53e;
+        }
+
+        &.new-users {
+
+            background-color: #1ebfae;
+        }
+
+        &.page-views {
+
+            background-color: #f9243f;
+        }
+    }
+
+    > .info {
+
+        padding-left: 15px;
+        line-height: 1.2;
+        font-size: 14px;
+        width: 100%;
+
+        &.show-loading {
+
+            text-align: center;
+            padding: 0;
+
+            > span {
+
+                display: inline-block;
+            }
+        }
+
+        span {
+
+            font-size: 200%;
+            display: block;
+            line-height: 1;
+        }
+    }
+}
+
+.site-title {
+
+    font-weight: 300;
+    color: #6e6468;
+}
+
+.app-shell {
+
+    border-radius: 0 0 4px 4px;
+    background-color: white;
+    height: 30vw;
+
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.title-sections {
+
+    border-bottom: 1px solid #eeeeee;
+    background-color: white;
+    border-radius: 4px 4px 0 0;
+    color: #6e6468;
+    font-size: 16px;
+    padding: 15px;
+    margin: 0;
+
+    > span {
+
+        margin-right: 10px;
+    }
+}
+
+.align-center {
+
+    @include prefix(align-items, center, ms moz webkit);
+}
+
+.chat-shell {
+
+    background-color: white;
+    padding: 20px;
+
+    overflow-y: scroll;
+    height: 300px;
+
+    ul {
+
+        list-style: none;
+        margin: 0;
+
+        > li:not(:last-child) {
+
+            border-bottom: 1px solid #cccccc;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+        }
+    }
+}
+
+.each-message {
+
+    @include prefix(align-items, center, ms moz webkit);
+
+    img {
+
+        margin-right: 20px;
+        border-radius: 50%;
+    }
+
+    .message {
+
+        width: 100%;
+    }
+
+    .author {
+
+        font-weight: 700;
+        color: #5f6476;
+        font-size: 14px;
+
+        > .time {
+
+            font-weight: 400;
+            color: #999999;
+            font-size: 12px;
+        }
+    }
+
+    p {
+
+        color: #5f6476;
+        line-height: 1.4;
+        font-size: 14px;
+        margin: 0;
+    }
+}
+
+.button {
+
+    @include prefix(transition, all .8s, ms moz webkit);
+    background-color: #8ad919;
+    padding: 0 30px;
+    cursor: pointer;
+    color: white;
+
+    &:hover {
+
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, .4);
+    }
+}
+
+.input-group {
+
+    border-radius: 0 0 4px 4px;
+    background-color: white;
+    padding: 10px;
+}
+
+.row-reverse {
+
+    @include prefix(flex-direction, row-reverse);
+}
